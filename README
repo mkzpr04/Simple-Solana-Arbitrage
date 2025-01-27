@@ -1,10 +1,10 @@
-# **Arbitrage Strategy for SOL/USDT on Binance and Kraken**
+#Arbitrage Strategy for SOL/USDT on Binance and Kraken
 
 This project implements an **arbitrage strategy** to exploit price differences between two major centralized exchanges (CEX), **Binance** and **Kraken**, for the trading pair **SOL/USDT**. The strategy seeks to buy the asset at a lower price on one exchange and sell it at a higher price on another, capturing the profit. The script also tracks profits, fees, and cumulative profit/loss (PNL) over time.
 
 ---
 
-## **Overview**
+##Overview
 
 - **Exchanges**: Binance and Kraken
 - **Trading Pair**: SOL/USDT
@@ -16,7 +16,7 @@ This project implements an **arbitrage strategy** to exploit price differences b
 
 ---
 
-## **Features**
+##Features
 
 - Fetches real-time price data from **Binance** and **Kraken**
 - Identifies arbitrage opportunities by comparing the price of **SOL/USDT**
@@ -24,11 +24,7 @@ This project implements an **arbitrage strategy** to exploit price differences b
 - Saves historical data to a CSV file
 - Visualizes Payoff and PNL graphs over time
 
----
-
-## **Installation**
-
-### Prerequisites
+###Prerequisites
 
 To run this project, you'll need to install the following Python libraries:
 
@@ -38,11 +34,10 @@ To run this project, you'll need to install the following Python libraries:
 
 To install the required dependencies, run the following command:
 
-```bash
 pip install requests pandas matplotlib
-```
 
-## **How It Works**
+
+##How It Works
 
 1. **Real-Time Price Fetching**: The script fetches **real-time prices** for the **SOL/USDT** pair from both **Binance** and **Kraken** APIs.
 2. **Arbitrage Opportunity Detection**: It compares the prices from both exchanges:
@@ -55,30 +50,30 @@ pip install requests pandas matplotlib
 
 ---
 
-## **Limitations**
+## Limitations
 
-1. **Centralized Exchanges (CEX) Limitations**:
+1. Centralized Exchanges (CEX) Limitations
    - The strategy uses centralized exchanges (**Binance** and **Kraken**), which:
      - Have relatively **high fees** (0.1% on Binance and 0.4% on Kraken).
      - Are not **on-chain**, meaning the trades are less transparent and can be slower due to centralized control.
    - **Slippage risk**: Price can change between the time the order is placed and executed, reducing profitability.
 
-2. **On-Chain Arbitrage**:
+2. On-Chain Arbitrage
    - On-chain arbitrage opportunities (e.g., using decentralized exchanges or AMMs) could have lower fees and more transparency but come with challenges:
      - **Gas fees** for transaction validation on blockchain networks (e.g., Solana or Ethereum).
      - **Network congestion** could delay transactions, affecting profitability.
 
-3. **API Limitations**:
+3. API Limitations
    - The script relies on the **Binance** and **Kraken** APIs, which may have **rate limits** or experience **downtime**.
    - **Latency** in data fetching could affect trading execution and profitability.
 
-4. **Market Conditions**:
+4. Market Conditions
    - Arbitrage opportunities are often **short-lived**. The script works in **real-time** to identify opportunities, but there’s no guarantee of consistent profits.
 
-5. **Fees Calculation**:
+5. Fees Calculation
    - The fee structure is assumed to be constant (0.1% on Binance, 0.4% on Kraken). However, fees can vary depending on **account types** and **trading volume**.
 
-## **Results and Output**
+##Results and Output
 
 CSV File: The script saves the data to arbitrage_opportunities.csv, containing detailed trade information such as:
 Timestamp
