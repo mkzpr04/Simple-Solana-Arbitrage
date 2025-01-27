@@ -1,0 +1,90 @@
+# **Arbitrage Strategy for SOL/USDT on Binance and Kraken**
+
+This project implements an **arbitrage strategy** to exploit price differences between two major centralized exchanges (CEX), **Binance** and **Kraken**, for the trading pair **SOL/USDT**. The strategy seeks to buy the asset at a lower price on one exchange and sell it at a higher price on another, capturing the profit. The script also tracks profits, fees, and cumulative profit/loss (PNL) over time.
+
+---
+
+## **Overview**
+
+- **Exchanges**: Binance and Kraken
+- **Trading Pair**: SOL/USDT
+- **Time Frame**: Data is collected over a 24-hour period (customizable)
+- **Fees**: 0.1% on Binance, 0.4% on Kraken
+- **Profit Calculation**: Based on the price difference after deducting transaction fees
+- **Data Tracking**: Historical data is saved in a CSV file for further analysis
+- **Visualization**: Payoff and PNL over time are plotted using **matplotlib**
+
+---
+
+## **Features**
+
+- Fetches real-time price data from **Binance** and **Kraken**
+- Identifies arbitrage opportunities by comparing the price of **SOL/USDT**
+- Tracks profit before and after fees, providing detailed results for each trade
+- Saves historical data to a CSV file
+- Visualizes Payoff and PNL graphs over time
+
+---
+
+## **Installation**
+
+### Prerequisites
+
+To run this project, you'll need to install the following Python libraries:
+
+- `requests`: For fetching data from APIs
+- `pandas`: For data manipulation and saving to CSV
+- `matplotlib`: For plotting the results
+
+To install the required dependencies, run the following command:
+
+```bash
+pip install requests pandas matplotlib
+```
+
+## **How It Works**
+
+1. **Real-Time Price Fetching**: The script fetches **real-time prices** for the **SOL/USDT** pair from both **Binance** and **Kraken** APIs.
+2. **Arbitrage Opportunity Detection**: It compares the prices from both exchanges:
+   - If **Binance** has a higher price than **Kraken**, the strategy buys on **Kraken** and sells on **Binance**.
+   - If **Kraken** has a higher price, the strategy buys on **Binance** and sells on **Kraken**.
+3. **Profit Calculation**: The **profit** is calculated as the price difference before deducting transaction fees.
+4. **Fee Deduction**: The script subtracts the **fees** from the profit to calculate the **net profit** after transaction costs. The fee structure used is 0.1% for Binance and 0.4% for Kraken.
+5. **Cumulative PNL Tracking**: The **cumulative profit and loss (PNL)** is tracked and updated with each trade. The results are saved to a **CSV file** for later analysis.
+6. **Data Visualization**: The script uses **matplotlib** to generate a graph showing **Payoff** and **PNL** over time.
+
+---
+
+## **Limitations**
+
+1. **Centralized Exchanges (CEX) Limitations**:
+   - The strategy uses centralized exchanges (**Binance** and **Kraken**), which:
+     - Have relatively **high fees** (0.1% on Binance and 0.4% on Kraken).
+     - Are not **on-chain**, meaning the trades are less transparent and can be slower due to centralized control.
+   - **Slippage risk**: Price can change between the time the order is placed and executed, reducing profitability.
+
+2. **On-Chain Arbitrage**:
+   - On-chain arbitrage opportunities (e.g., using decentralized exchanges or AMMs) could have lower fees and more transparency but come with challenges:
+     - **Gas fees** for transaction validation on blockchain networks (e.g., Solana or Ethereum).
+     - **Network congestion** could delay transactions, affecting profitability.
+
+3. **API Limitations**:
+   - The script relies on the **Binance** and **Kraken** APIs, which may have **rate limits** or experience **downtime**.
+   - **Latency** in data fetching could affect trading execution and profitability.
+
+4. **Market Conditions**:
+   - Arbitrage opportunities are often **short-lived**. The script works in **real-time** to identify opportunities, but there’s no guarantee of consistent profits.
+
+5. **Fees Calculation**:
+   - The fee structure is assumed to be constant (0.1% on Binance, 0.4% on Kraken). However, fees can vary depending on **account types** and **trading volume**.
+
+## **Results and Output**
+
+CSV File: The script saves the data to arbitrage_opportunities.csv, containing detailed trade information such as:
+Timestamp
+Buy price
+Sell price
+Profit before and after fees
+Cumulative PNL
+Graph: A graph is generated to show the Payoff and PNL per transaction over time. The red dashed line represents the payoff, and the blue line shows the cumulative PNL.
+
